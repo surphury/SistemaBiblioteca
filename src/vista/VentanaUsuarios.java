@@ -6,12 +6,12 @@ package vista;
 
 /**
  *
- * @author LAPTOP-404
+ * @author surphury
  */
 public class VentanaUsuarios extends javax.swing.JPanel {
 
     /**
-     * Creates new form VentanaUsuarios
+     * Creates new form PanelUsuario
      */
     public VentanaUsuarios() {
         initComponents();
@@ -26,32 +26,149 @@ public class VentanaUsuarios extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jButton11 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 255, 255));
-        jLabel1.setText("Ventanas Usuarios");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jLabel1)
-                .addContainerGap(85, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(139, 139, 139)
-                .addComponent(jLabel1)
-                .addContainerGap(145, Short.MAX_VALUE))
-        );
+        jPanel1.setBackground(new java.awt.Color(245, 245, 245));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setText("SELECCIONE EL TIPO DE REPORTE");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 380, -1));
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 720, 180));
+
+        jLabel10.setText("NUMERO DE IDENTIFICACIÓN");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 220, -1));
+
+        jTextField1.setToolTipText("GFDGDFGF");
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 220, 20));
+
+        jLabel11.setText("NOMBRE COMPLETO");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 240, 20));
+
+        jTextField2.setToolTipText("GFDGDFGF");
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 240, 20));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel8.setText("USUARIOS REGISTRADOS");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 350, -1));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel16.setText("GESTION DE USUARIOS");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 350, -1));
+
+        jTextField7.setToolTipText("GFDGDFGF");
+        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, 240, 20));
+
+        jLabel17.setText("EMAIL");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 30, 240, -1));
+
+        jTextField3.setToolTipText("GFDGDFGF");
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 220, 20));
+
+        jLabel12.setText("TELEFONO");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 220, -1));
+
+        jTextField4.setToolTipText("GFDGDFGF");
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 240, 20));
+
+        jLabel13.setText("DIRECCIÓN");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 240, 20));
+
+        jLabel18.setText("EMAIL");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 240, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, 240, 20));
+
+        jButton11.setBackground(new java.awt.Color(0, 153, 255));
+        jButton11.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        jButton11.setForeground(new java.awt.Color(242, 242, 242));
+        jButton11.setText("LIMPIAR");
+        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 120, 30));
+
+        jButton9.setBackground(new java.awt.Color(255, 0, 0));
+        jButton9.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(242, 242, 242));
+        jButton9.setText("DESACTIVAR");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 110, 30));
+
+        jButton10.setBackground(new java.awt.Color(0, 204, 0));
+        jButton10.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        jButton10.setForeground(new java.awt.Color(242, 242, 242));
+        jButton10.setText("GUARDAR USUARIO");
+        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 160, 30));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 470));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 }

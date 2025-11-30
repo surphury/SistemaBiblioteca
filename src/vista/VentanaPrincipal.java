@@ -4,162 +4,84 @@
  */
 package vista;
 
-import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
 /**
  *
- * @author LAPTOP-404
+ * @author LAB01-PC01
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form VentanaPrincipal
      */
-    public VentanaPrincipal() {
-        initComponents();
-        //agregar iconos al menu principal
-        MenuArchivo.setIcon(new javax.swing.ImageIcon("iconos/archivos.png"));
-        MenuLibros.setIcon(new javax.swing.ImageIcon("iconos/libros.png"));
-        MenuPrestamos.setIcon(new javax.swing.ImageIcon("iconos/prestamo.png"));
-        MenuUsuarios.setIcon(new javax.swing.ImageIcon("iconos/usuarios.png"));
-        MenuReportes.setIcon(new javax.swing.ImageIcon("iconos/reportes.png"));
-        MenuConfiguracion.setIcon(new javax.swing.ImageIcon("iconos/configuracion.png"));
-        MenuAyuda.setIcon(new javax.swing.ImageIcon("iconos/ayuda.png"));
-        
-        //AGREGAR BORDER AL BOTON
-        
-        javax.swing.border.Border borde=javax.swing.BorderFactory.createRaisedBevelBorder();
-        btnNuevo.setBorder(borde);
-        btnNuevo.setBackground(new java.awt.Color(200,200,200));
-        btnNuevo.setOpaque(true);
-        
-        btnEditar.setBorder(borde);
-        btnEditar.setBackground(new java.awt.Color(200,200,200));
-        btnEditar.setOpaque(true);
-        
-        btnEliminar.setBorder(borde);
-        btnEliminar.setBackground(new java.awt.Color(200,200,200));
-        btnEliminar.setOpaque(true);
-        
-        //agregar la configuracion del panel central
-         pnlContenido.setLayout(new java.awt.BorderLayout());
-          //aca coloque el tamano para evitar problema
-         
-         
-         
-        //Mejorar menu principal
-        java.awt.Font fuenteMenu = new java.awt.Font("Segoe UI",java.awt.Font.BOLD,14);
-        MenuArchivo.setFont(fuenteMenu);
-        MenuLibros.setFont(fuenteMenu);
-        MenuPrestamos.setFont(fuenteMenu);
-        MenuUsuarios.setFont(fuenteMenu);
-        MenuReportes.setFont(fuenteMenu);
-        MenuConfiguracion.setFont(fuenteMenu);
-        MenuAyuda.setFont(fuenteMenu);
-        
-        //agregar iconos a los botones
-        btnNuevo.setIcon(new javax.swing.ImageIcon("iconos/nuevo.png"));
-        btnNuevo.setText("Nuevo");
-        btnNuevo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnNuevo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        
-        
-        btnEditar.setIcon(new javax.swing.ImageIcon("iconos/editarlibros.png"));
-        btnEditar.setText("Editar");
-        
-        btnEliminar.setIcon(new javax.swing.ImageIcon("iconos/eliminar.png"));
-        btnEliminar.setText("Eliminar");
-        
-        btnBuscar.setIcon(new javax.swing.ImageIcon("iconos/buscar.png"));
-        btnBuscar.setText("Buscar");
-        
-        btnImprimir.setIcon(new javax.swing.ImageIcon("iconos/impresora.png"));
-        btnImprimir.setText("Imprimir");
-        
-        btnActualizar.setIcon(new javax.swing.ImageIcon("iconos/actualizar.png"));
-        btnActualizar.setText("Actualizar");
-        
-        btnSalir.setIcon(new javax.swing.ImageIcon("iconos/salir.png"));
-        btnSalir.setText("Salir");
-        
-        //AUMENTAR DE FUENTES EN LOS BOTONES
-        
-        java.awt.Font fuenteGrande = new java.awt.Font("Segoe UI",java.awt.Font.BOLD,14);
-        btnNuevo.setFont(fuenteGrande);
-        //HACER MAS GRANDES LOS BOTONES DE TOOL BAR
-        java.awt.Dimension tamaño=new java.awt.Dimension (80,350);
-        btnNuevo.setPreferredSize(tamaño);
-        btnNuevo.setMaximumSize(tamaño);
-        
-        //botones de panel modulo
-        Dimension tamañoBoton = new Dimension(250, 50);
-        btnGesLibro.setPreferredSize(tamañoBoton);
-        btnGesLibro.setMinimumSize(tamañoBoton);
-        btnGesLibro.setMaximumSize(tamañoBoton);    
-        btnGesPres.setPreferredSize(tamañoBoton);
-        btnGesPres.setMinimumSize(tamañoBoton);
-        btnGesPres.setMaximumSize(tamañoBoton);
-        btnGesUsu.setPreferredSize(tamañoBoton);
-        btnGesUsu.setMinimumSize(tamañoBoton);
-        btnGesUsu.setMaximumSize(tamañoBoton);
-        btnVer.setPreferredSize(tamañoBoton);
-        btnVer.setMinimumSize(tamañoBoton);
-        btnVer.setMaximumSize(tamañoBoton);
-        btnConfi.setPreferredSize(tamañoBoton);
-        btnConfi.setMinimumSize(tamañoBoton);
-        btnConfi.setMaximumSize(tamañoBoton);   
-        
-        
-        
-        btnGesLibro.setIcon(new javax.swing.ImageIcon("iconos/libros.png"));
-        btnGesLibro.setText("Gestionar Libro");
-        btnGesLibro.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-            
-        btnGesPres.setIcon(new javax.swing.ImageIcon("iconos/prestamo.png"));
-        btnGesPres.setText("Gestionar Prestamo");
-        btnGesPres.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        
-        btnGesUsu.setIcon(new javax.swing.ImageIcon("iconos/usuarios.png"));
-        btnGesUsu.setText("Gestionar Usuarios");
-        btnGesUsu.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        
-        btnVer.setIcon(new javax.swing.ImageIcon("iconos/reportes.png"));
-        btnVer.setText("Ver Reportes");
-        btnVer.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        
-        btnConfi.setIcon(new javax.swing.ImageIcon("iconos/configuracion.png"));
-        btnConfi.setText("Configuracion");
-        btnConfi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        
-
-        
-        
-        //Se  configura la ventana principal para permitir navegar con los paneles
-        setLocationRelativeTo(null);
-         setDefaultCloseOperation(EXIT_ON_CLOSE);
-         setTitle("Sistema de Gestión de Biblioteca");
-         setSize(1000, 700);
-        // cargar panel de libros por defecto
-        cargarPanel(new VentanaLibros());
-    }
     //se creara la funcion cargaPanel
     private void cargarPanel(javax.swing.JPanel panel) {
-    try {
-        System.out.println("Intentando cargar panel: " + panel.getClass().getName());
-        
-        pnlContenido.removeAll();
-        pnlContenido.add(panel, java.awt.BorderLayout.CENTER);
-        pnlContenido.revalidate();
-        pnlContenido.repaint();    
-        System.out.println("✓ Panel cargado correctamente");
-    } catch (Exception e) {
-        System.err.println("✗ Error al cargar panel: " + e.getMessage());
-        e.printStackTrace();
-    }
-}
+        try {
+            System.out.println("Intentando cargar panel: " + panel.getClass().getName());
 
-    
-    
+            pnlContenido.removeAll();
+            panel.setSize(pnlContenido.getSize()); // obligatorio
+            pnlContenido.add(panel,
+                    new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0,
+                            panel.getWidth(), panel.getHeight())
+            );
+            pnlContenido.revalidate();
+            pnlContenido.repaint();
+
+            System.out.println("✓ Panel cargado correctamente");
+        } catch (Exception e) {
+            System.err.println("✗ Error al cargar panel: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public VentanaPrincipal() {
+        initComponents();
+
+        setTitle("Ventana Principal - Sistema Biblioteca");
+        setSize(600, 420);
+        setLayout(null); // layout absoluto
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        // JButton btnLibros = new JButton("Gestionar Libros");
+        btnLibros.setBounds(40, 40, 200, 40);
+        btnLibros.addActionListener((ActionEvent e) -> cargarPanel(new VentanaLibros()));
+
+        // JButton btnUsuarios = new JButton("Gestionar Usuarios");
+        btnUsuarios.setBounds(40, 100, 200, 40);
+        btnUsuarios.addActionListener((ActionEvent e) -> cargarPanel(new VentanaUsuarios()));
+
+        // JButton btnPrestamos = new JButton("Gestionar Préstamos");
+        btnPrestamos.setBounds(40, 160, 200, 40);
+        btnPrestamos.addActionListener((ActionEvent e) -> cargarPanel(new VentanaPrestamos()));
+
+        // JButton btnReportes = new JButton("Reportes");
+        btnReportes.setBounds(40, 220, 200, 40);
+        btnReportes.addActionListener((ActionEvent e) -> cargarPanel(new VentanaReportes()));
+
+        //JButton btnConfig = new JButton("Configuración");
+        btnConfig.setBounds(40, 280, 200, 40);
+        btnConfig.addActionListener((ActionEvent e) -> cargarPanel(new VentanaConfiguracion()));
+
+        // add(btnLibros);
+        //add(btnUsuarios);
+        //add(btnPrestamos);
+        //add(btnReportes);
+        // add(btnConfig);
+        //Se  configura la ventana principal para permitir navegar con los paneles
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setTitle("Sistema de Gestión de Biblioteca");
+        setSize(1000, 700);
+
+        // cargar panel de libros por defecto
+        // cargarPanel(new PanelLibro());
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -169,178 +91,339 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        menuBar1 = new java.awt.MenuBar();
+        menu1 = new java.awt.Menu();
+        menu2 = new java.awt.Menu();
+        menuBar2 = new java.awt.MenuBar();
+        menu3 = new java.awt.Menu();
+        menu4 = new java.awt.Menu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu11 = new javax.swing.JMenu();
         jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        jMenu12 = new javax.swing.JMenu();
+        jMenu13 = new javax.swing.JMenu();
+        jMenu14 = new javax.swing.JMenu();
+        jMenuBar3 = new javax.swing.JMenuBar();
+        jMenu15 = new javax.swing.JMenu();
+        jMenu16 = new javax.swing.JMenu();
+        jMenuBar4 = new javax.swing.JMenuBar();
+        jMenu17 = new javax.swing.JMenu();
+        jMenu18 = new javax.swing.JMenu();
+        jMenuBar5 = new javax.swing.JMenuBar();
+        jMenu19 = new javax.swing.JMenu();
+        jMenu20 = new javax.swing.JMenu();
+        jMenuBar6 = new javax.swing.JMenuBar();
+        jMenu21 = new javax.swing.JMenu();
+        jMenu22 = new javax.swing.JMenu();
+        jMenuBar7 = new javax.swing.JMenuBar();
+        jMenu23 = new javax.swing.JMenu();
+        jMenu24 = new javax.swing.JMenu();
+        jMenu25 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jPopupMenu2 = new javax.swing.JPopupMenu();
+        jMenu26 = new javax.swing.JMenu();
+        jMenuBar8 = new javax.swing.JMenuBar();
+        jMenu27 = new javax.swing.JMenu();
+        jMenu28 = new javax.swing.JMenu();
+        jMenu29 = new javax.swing.JMenu();
+        jMenuBar9 = new javax.swing.JMenuBar();
+        jMenu30 = new javax.swing.JMenu();
+        jMenu31 = new javax.swing.JMenu();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jToolBar1 = new javax.swing.JToolBar();
-        btnNuevo = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
-        btnImprimir = new javax.swing.JButton();
-        btnActualizar = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jToggleButton3 = new javax.swing.JToggleButton();
+        jToggleButton4 = new javax.swing.JToggleButton();
+        jToggleButton5 = new javax.swing.JToggleButton();
+        jToggleButton6 = new javax.swing.JToggleButton();
+        jToggleButton7 = new javax.swing.JToggleButton();
+        jPanel2 = new javax.swing.JPanel();
+        btnPrestamos = new javax.swing.JButton();
+        btnConfig = new javax.swing.JButton();
+        btnLibros = new javax.swing.JButton();
+        btnUsuarios = new javax.swing.JButton();
+        btnReportes = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnGesLibro = new javax.swing.JButton();
-        btnGesPres = new javax.swing.JButton();
-        btnGesUsu = new javax.swing.JButton();
-        btnVer = new javax.swing.JButton();
-        btnConfi = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
         pnlContenido = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        MenuArchivo = new javax.swing.JMenu();
-        MenuLibros = new javax.swing.JMenu();
-        MenuPrestamos = new javax.swing.JMenu();
-        MenuUsuarios = new javax.swing.JMenu();
-        MenuReportes = new javax.swing.JMenu();
-        MenuConfiguracion = new javax.swing.JMenu();
-        MenuAyuda = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
+        jMenu8 = new javax.swing.JMenu();
+        jMenu9 = new javax.swing.JMenu();
+        jMenu10 = new javax.swing.JMenu();
 
-        jMenu1.setText("File");
-        jMenuBar2.add(jMenu1);
+        menu1.setLabel("File");
+        menuBar1.add(menu1);
 
-        jMenu2.setText("Edit");
-        jMenuBar2.add(jMenu2);
+        menu2.setLabel("Edit");
+        menuBar1.add(menu2);
+
+        menu3.setLabel("File");
+        menuBar2.add(menu3);
+
+        menu4.setLabel("Edit");
+        menuBar2.add(menu4);
+
+        jMenu3.setText("jMenu3");
+
+        jMenu4.setText("jMenu4");
+
+        jMenu5.setText("jMenu5");
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem2.setText("jMenuItem2");
+
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
+
+        jMenuItem3.setText("jMenuItem3");
+
+        jMenu11.setText("jMenu11");
+
+        jMenu12.setText("File");
+        jMenuBar2.add(jMenu12);
+
+        jMenu13.setText("Edit");
+        jMenuBar2.add(jMenu13);
+
+        jMenu14.setText("jMenu14");
+
+        jMenu15.setText("File");
+        jMenuBar3.add(jMenu15);
+
+        jMenu16.setText("Edit");
+        jMenuBar3.add(jMenu16);
+
+        jMenu17.setText("File");
+        jMenuBar4.add(jMenu17);
+
+        jMenu18.setText("Edit");
+        jMenuBar4.add(jMenu18);
+
+        jMenu19.setText("File");
+        jMenuBar5.add(jMenu19);
+
+        jMenu20.setText("Edit");
+        jMenuBar5.add(jMenu20);
+
+        jMenu21.setText("File");
+        jMenuBar6.add(jMenu21);
+
+        jMenu22.setText("Edit");
+        jMenuBar6.add(jMenu22);
+
+        jMenu23.setText("File");
+        jMenuBar7.add(jMenu23);
+
+        jMenu24.setText("Edit");
+        jMenuBar7.add(jMenu24);
+
+        jMenu25.setText("jMenu25");
+
+        jMenuItem4.setText("jMenuItem4");
+
+        jMenu26.setText("jMenu26");
+
+        jMenu27.setText("File");
+        jMenuBar8.add(jMenu27);
+
+        jMenu28.setText("Edit");
+        jMenuBar8.add(jMenu28);
+
+        jMenu29.setText("jMenu29");
+
+        jMenu30.setText("File");
+        jMenuBar9.add(jMenu30);
+
+        jMenu31.setText("Edit");
+        jMenuBar9.add(jMenu31);
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel4.setText("FECHA INICIO");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(232, 232, 232));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jToolBar1.setBackground(new java.awt.Color(232, 232, 232));
         jToolBar1.setRollover(true);
 
-        btnNuevo.setText("jButton1");
-        btnNuevo.setFocusable(false);
-        btnNuevo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnNuevo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnNuevo);
+        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add.png"))); // NOI18N
+        jToggleButton1.setText("NUEVO");
+        jToggleButton1.setFocusable(false);
+        jToggleButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jToggleButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jToggleButton1);
 
-        btnEditar.setText("jButton2");
-        btnEditar.setFocusable(false);
-        btnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnEditar);
+        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/edit.png"))); // NOI18N
+        jToggleButton2.setText("EDITAR");
+        jToggleButton2.setFocusable(false);
+        jToggleButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jToggleButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jToggleButton2);
 
-        btnEliminar.setText("jButton3");
-        btnEliminar.setFocusable(false);
-        btnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnEliminar);
+        jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/can.png"))); // NOI18N
+        jToggleButton3.setText("ELIMINAR");
+        jToggleButton3.setFocusable(false);
+        jToggleButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jToggleButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jToggleButton3);
 
-        btnBuscar.setText("jButton4");
-        btnBuscar.setFocusable(false);
-        btnBuscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnBuscar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnBuscar);
+        jToggleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/search.png"))); // NOI18N
+        jToggleButton4.setText("BUSCAR");
+        jToggleButton4.setFocusable(false);
+        jToggleButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jToggleButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jToggleButton4);
 
-        btnImprimir.setText("jButton5");
-        btnImprimir.setFocusable(false);
-        btnImprimir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnImprimir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnImprimir);
+        jToggleButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/print.png"))); // NOI18N
+        jToggleButton5.setText("IMPRIMIR");
+        jToggleButton5.setFocusable(false);
+        jToggleButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jToggleButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jToggleButton5);
 
-        btnActualizar.setText("jButton6");
-        btnActualizar.setFocusable(false);
-        btnActualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnActualizar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnActualizar);
+        jToggleButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/update.png"))); // NOI18N
+        jToggleButton6.setText("ACTUALIZAR");
+        jToggleButton6.setFocusable(false);
+        jToggleButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jToggleButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jToggleButton6);
 
-        btnSalir.setText("jButton7");
-        btnSalir.setFocusable(false);
-        btnSalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnSalir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnSalir);
+        jToggleButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/exit.png"))); // NOI18N
+        jToggleButton7.setText("SALIR");
+        jToggleButton7.setFocusable(false);
+        jToggleButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jToggleButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToggleButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton7ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jToggleButton7);
 
-        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 848, 90));
+        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 60));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0)));
-        jPanel1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setBackground(new java.awt.Color(245, 245, 245));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnPrestamos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/loan.png"))); // NOI18N
+        btnPrestamos.setText("GESTIONAR PRESTAMO");
+        btnPrestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrestamosActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 150, -1));
+
+        btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/settings.png"))); // NOI18N
+        btnConfig.setText("CONFIGURACIÓN");
+        jPanel2.add(btnConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 150, -1));
+
+        btnLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/dashboard.png"))); // NOI18N
+        btnLibros.setText("GESTIONAR LIBROS");
+        btnLibros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLibrosActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 150, -1));
+
+        btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/users.png"))); // NOI18N
+        btnUsuarios.setText("GESTIONAR USUARIOS");
+        jPanel2.add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 150, -1));
+
+        btnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/report.png"))); // NOI18N
+        btnReportes.setText("VER REPORTES");
+        jPanel2.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 150, -1));
+
+        jButton6.setText("VER REPORTES");
+        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 150, -1));
 
         jLabel1.setText("MODULOS");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 7, 69, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 150, -1));
 
-        btnGesLibro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGesLibroActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnGesLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 170, 480));
 
-        btnGesPres.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGesPresActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnGesPres, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        jLabel9.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel9.setText("READY | TOTAL DE LIBROS: 15 | USUARIOS CONECTADOS: 1");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 950, 30));
 
-        btnGesUsu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGesUsuActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnGesUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
-        jPanel1.add(btnVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
-        jPanel1.add(btnConfi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+        pnlContenido.setToolTipText("");
+        pnlContenido.setAutoscrolls(true);
+        pnlContenido.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pnlContenido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(pnlContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 840, 530));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 290, 360));
+        jMenuBar1.setBackground(new java.awt.Color(208, 208, 208));
 
-        pnlContenido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 255, 0)));
+        jMenu1.setText("ARCHIVO");
+        jMenuBar1.add(jMenu1);
 
-        javax.swing.GroupLayout pnlContenidoLayout = new javax.swing.GroupLayout(pnlContenido);
-        pnlContenido.setLayout(pnlContenidoLayout);
-        pnlContenidoLayout.setHorizontalGroup(
-            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 508, Short.MAX_VALUE)
-        );
-        pnlContenidoLayout.setVerticalGroup(
-            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        jMenu2.setText("LIBROS");
+        jMenuBar1.add(jMenu2);
 
-        getContentPane().add(pnlContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 510, 360));
+        jMenu6.setText("PRESTAMOS");
+        jMenuBar1.add(jMenu6);
 
-        MenuArchivo.setText("Archivo");
-        jMenuBar1.add(MenuArchivo);
+        jMenu7.setText("USUARIOS");
+        jMenuBar1.add(jMenu7);
 
-        MenuLibros.setText("Libros");
-        jMenuBar1.add(MenuLibros);
+        jMenu8.setText("REPORTES");
+        jMenuBar1.add(jMenu8);
 
-        MenuPrestamos.setText("Prestamos");
-        jMenuBar1.add(MenuPrestamos);
+        jMenu9.setText("CONFIGURACIÓN");
+        jMenuBar1.add(jMenu9);
 
-        MenuUsuarios.setText("Usuarios");
-        jMenuBar1.add(MenuUsuarios);
-
-        MenuReportes.setText("Reportes");
-        jMenuBar1.add(MenuReportes);
-
-        MenuConfiguracion.setText("Configuracion");
-        jMenuBar1.add(MenuConfiguracion);
-
-        MenuAyuda.setText("Ayuda");
-        jMenuBar1.add(MenuAyuda);
+        jMenu10.setText("AYUDA");
+        jMenuBar1.add(jMenu10);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGesLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGesLibroActionPerformed
+    private void btnPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrestamosActionPerformed
         // TODO add your handling code here:
-        cargarPanel(new VentanaLibros());
-    }//GEN-LAST:event_btnGesLibroActionPerformed
+    }//GEN-LAST:event_btnPrestamosActionPerformed
 
-    private void btnGesPresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGesPresActionPerformed
+    private void jToggleButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton7ActionPerformed
         // TODO add your handling code here:
-        //
-        cargarPanel(new VentanaPrestamos());
-    }//GEN-LAST:event_btnGesPresActionPerformed
+    }//GEN-LAST:event_jToggleButton7ActionPerformed
 
-    private void btnGesUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGesUsuActionPerformed
-        // TODO add your handling code here:
-        
-        cargarPanel(new VentanaUsuarios());
-    }//GEN-LAST:event_btnGesUsuActionPerformed
+    private void btnLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibrosActionPerformed
+
+    }//GEN-LAST:event_btnLibrosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,40 +453,86 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaPrincipal().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new VentanaPrincipal().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu MenuArchivo;
-    private javax.swing.JMenu MenuAyuda;
-    private javax.swing.JMenu MenuConfiguracion;
-    private javax.swing.JMenu MenuLibros;
-    private javax.swing.JMenu MenuPrestamos;
-    private javax.swing.JMenu MenuReportes;
-    private javax.swing.JMenu MenuUsuarios;
-    private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnConfi;
-    private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnGesLibro;
-    private javax.swing.JButton btnGesPres;
-    private javax.swing.JButton btnGesUsu;
-    private javax.swing.JButton btnImprimir;
-    private javax.swing.JButton btnNuevo;
-    private javax.swing.JButton btnSalir;
-    private javax.swing.JButton btnVer;
+    private javax.swing.JButton btnConfig;
+    private javax.swing.JButton btnLibros;
+    private javax.swing.JButton btnPrestamos;
+    private javax.swing.JButton btnReportes;
+    private javax.swing.JButton btnUsuarios;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu10;
+    private javax.swing.JMenu jMenu11;
+    private javax.swing.JMenu jMenu12;
+    private javax.swing.JMenu jMenu13;
+    private javax.swing.JMenu jMenu14;
+    private javax.swing.JMenu jMenu15;
+    private javax.swing.JMenu jMenu16;
+    private javax.swing.JMenu jMenu17;
+    private javax.swing.JMenu jMenu18;
+    private javax.swing.JMenu jMenu19;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu20;
+    private javax.swing.JMenu jMenu21;
+    private javax.swing.JMenu jMenu22;
+    private javax.swing.JMenu jMenu23;
+    private javax.swing.JMenu jMenu24;
+    private javax.swing.JMenu jMenu25;
+    private javax.swing.JMenu jMenu26;
+    private javax.swing.JMenu jMenu27;
+    private javax.swing.JMenu jMenu28;
+    private javax.swing.JMenu jMenu29;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu30;
+    private javax.swing.JMenu jMenu31;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuBar jMenuBar3;
+    private javax.swing.JMenuBar jMenuBar4;
+    private javax.swing.JMenuBar jMenuBar5;
+    private javax.swing.JMenuBar jMenuBar6;
+    private javax.swing.JMenuBar jMenuBar7;
+    private javax.swing.JMenuBar jMenuBar8;
+    private javax.swing.JMenuBar jMenuBar9;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JPopupMenu jPopupMenu2;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton jToggleButton4;
+    private javax.swing.JToggleButton jToggleButton5;
+    private javax.swing.JToggleButton jToggleButton6;
+    private javax.swing.JToggleButton jToggleButton7;
     private javax.swing.JToolBar jToolBar1;
+    private java.awt.Menu menu1;
+    private java.awt.Menu menu2;
+    private java.awt.Menu menu3;
+    private java.awt.Menu menu4;
+    private java.awt.MenuBar menuBar1;
+    private java.awt.MenuBar menuBar2;
     private javax.swing.JPanel pnlContenido;
     // End of variables declaration//GEN-END:variables
 }
