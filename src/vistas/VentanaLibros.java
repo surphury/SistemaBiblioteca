@@ -19,6 +19,7 @@ import javax.swing.DefaultButtonModel;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
@@ -61,7 +62,6 @@ public class VentanaLibros extends javax.swing.JPanel {
                 return column == 7;
             }
         });
-
         // Ajustar ancho de columnas
         tblRegistrarLibros.getColumnModel().getColumn(0).setPreferredWidth(30);
         tblRegistrarLibros.getColumnModel().getColumn(1).setPreferredWidth(200);
@@ -72,7 +72,6 @@ public class VentanaLibros extends javax.swing.JPanel {
         tblRegistrarLibros.getColumnModel().getColumn(6).setPreferredWidth(60);
         tblRegistrarLibros.getColumnModel().getColumn(7).setPreferredWidth(220);
         tblRegistrarLibros.getColumnModel().getColumn(7).setMinWidth(220);
-
         // Renderizador y editor de botones
         //tblRegistrarLibros.getColumnModel().getColumn(7).setCellRenderer(new ButtonRenderer());
         //tblRegistrarLibros.getColumnModel().getColumn(7).setCellEditor(new ButtonEditor(new javax.swing.JCheckBox()));
@@ -218,7 +217,7 @@ public class VentanaLibros extends javax.swing.JPanel {
         txtTituloLibro.requestFocus();
     }
 
-    /*class ButtonRenderer extends JPanel implements TableCellRenderer {
+    class ButtonRenderer extends JPanel implements TableCellRenderer {
 
         JButton btnEditar = new JButton("Editar");
         JButton btnEliminar = new JButton("Eliminar");
@@ -245,91 +244,165 @@ public class VentanaLibros extends javax.swing.JPanel {
             btnEliminar.setCursor(new Cursor(Cursor.HAND_CURSOR));
             add(btnEditar);
             add(btnEliminar);
-
-            @Override
-            public Component getTableCellRendererComponent
-            (JTable table, Object value
-            , boolean isSelected, boolean hasFocus, int row, int column
-           
-            
-            
-            
-            
-            ){
-            
         }
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value,
+                boolean isSelected, boolean hasFocus, int row, int column
+        ) {
+
             if (isSelected) {
                 setBackground(table.getSelectionBackground());
             } else {
                 setBackground(table.getBackground());
             }
+            return this;
 
         }
 
-    }*/
+        class ButtonEditor extends DefaultCellEditor {
 
-   /* class ButtonEditor extends DefaultCellEditor {
+            JPanel panel;
+            JButton btnEditar;
+            JButton btnEliminar;
+            int filaSelecionada;
 
-        JPanel panel;
-        JButton btnEditar;
-        JButton btnEliminar;
-        int FilaSelecionada;
+            public ButtonEditor(JCheckBox checkBox) {
 
-        public ButtonEditor(JCheckBox checkBox) {
+                super(checkBox);
 
-            super(checkBox);
+                panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 5));
+                panel.setOpaque(true);
+                panel.setMinimumSize(new Dimension(350, 50));
+                panel.setMaximumSize(new Dimension(350, 50));
 
-            panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 5));
-            panel.setOpaque(true);
-            panel.setMinimumSize(new Dimension(350, 50));
-            panel.setMaximumSize(new Dimension(350, 50));
+                btnEditar.setBackground(new Color(0, 123, 255));
+                btnEditar.setForeground(Color.white);
+                btnEditar.setFocusPainted(false);
+                btnEditar.setBorderPainted(false);
+                btnEditar.setFont(new Font("Segoe UI", Font.BOLD, 15));
 
-            btnEditar.setBackground(new Color(0, 123, 255));
-            btnEditar.setForeground(Color.white);
-            btnEditar.setFocusPainted(false);
-            btnEditar.setBorderPainted(false);
-            btnEditar.setFont(new Font("Segoe UI", Font.BOLD, 15));
+                btnEditar.setPreferredSize(new Dimension(90, 28));
+                btnEditar.setMinimumSize(new Dimension(90, 28));
+                btnEditar.setMaximumSize(new Dimension(90, 28));
 
-            btnEditar.setPreferredSize(new Dimension(90, 28));
-            btnEditar.setMinimumSize(new Dimension(90, 28));
-            btnEditar.setMaximumSize(new Dimension(90, 28));
+                btnEditar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-            btnEditar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                btnEliminar.setBackground(new Color(220, 53, 69));
+                btnEliminar.setForeground(Color.white);
+                btnEliminar.setFocusPainted(false);
+                btnEliminar.setBorderPainted(false);
+                btnEliminar.setFont(new Font("Segoe UI", Font.BOLD, 15));
 
-            btnEliminar.setBackground(new Color(220, 53, 69));
-            btnEliminar.setForeground(Color.white);
-            btnEliminar.setFocusPainted(false);
-            btnEliminar.setBorderPainted(false);
-            btnEliminar.setFont(new Font("Segoe UI", Font.BOLD, 15));
+                btnEliminar.setPreferredSize(new Dimension(90, 28));
+                btnEliminar.setMinimumSize(new Dimension(90, 28));
+                btnEliminar.setMaximumSize(new Dimension(90, 28));
+                btnEliminar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-            btnEliminar.setPreferredSize(new Dimension(90, 28));
-            btnEliminar.setMinimumSize(new Dimension(90, 28));
-            btnEliminar.setMaximumSize(new Dimension(90, 28));
-            btnEliminar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                btnEditar.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseEntered(MouseEvent e
+                    ) {
+                        btnEditar.setBackground(new Color(200, 35, 51));
+                    }
 
-            btnEditar.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseEntered(MouseEvent e
-                ) {
-                    btnEditar.setBackground(new Color(0, 102, 204));
+                    @Override
+                    public void mouseExited(MouseEvent e
+                    ) {
+                        btnEditar.setBackground(new Color(200, 53, 69));
+                    }
+
                 }
+                );
 
-                @Override
-                public void mouseExited(MouseEvent e
-                ) {
-                    btnEditar.setBackground(new Color(0, 102, 204));
+                btnEliminar.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseEntered(MouseEvent e
+                    ) {
+                        btnEditar.setBackground(new Color(0, 102, 204));
+                    }
+
+                    @Override
+                    public void mouseExited(MouseEvent e
+                    ) {
+                        btnEditar.setBackground(new Color(0, 102, 204));
+                    }
+
                 }
+                );
 
+                btnEditar.addActionListener(
+                        e -> {
+                            filaSelecionada = tblRegistrarLibros.getSelectedRow();
+
+                            if (filaSelecionada != -1) {
+                                // editarLibro(filaSelecionada); // falta crear metodo editar libro
+
+                            }
+                            fireEditingStopped();
+                        }
+                );
+                panel.add(btnEditar);
+                panel.add(btnEliminar);
             }
-            );
-        }*/
 
-        /*
+            @Override
+            public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+                if (isSelected) {
+                    panel.setBackground(table.getSelectionBackground());
+                } else {
+                    panel.setBackground(table.getBackground());
+                }
+
+                return panel;
+            }
+
+            @Override
+            public Object getCellEditorValue() {
+                return "Acciones";
+            }
+        }
+
+        private void EliminarLibro(int fila) {
+            try {
+                // Obtener el ID y titulo del libro
+                int idLibro = (int) tblRegistrarLibros.getValueAt(fila, 0);
+                String titulo = tblRegistrarLibros.getValueAt(fila, 1).toString();
+                // Confirmar eliminación
+                int confirmacion = JOptionPane.showConfirmDialog(this,
+                        "¿Está seguro de eliminar el libro:\n\"" + titulo + "\"?",
+                        "Confirmar eliminación",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.WARNING_MESSAGE);
+                if (confirmacion == JOptionPane.YES_OPTION) {
+                    boolean eliminado = libroDAO.eliminarLibro(idLibro);
+                    if (eliminado) {
+                        JOptionPane.showMessageDialog(this,
+                                "Libro eliminado exitosamente",
+                                "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                        // Recargar la tabla
+                        cargarDatosTabla();
+                    } else {
+                        javax.swing.JOptionPane.showMessageDialog(this,
+                                "No se pudo eliminar el libro",
+                                "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    }
+
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this,
+                        "Error al eliminar: " + e.getMessage(),
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+    }
+
+    /*
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-         */
-        @SuppressWarnings("unchecked")
+     * regenerated by the Form Editor.*/
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
