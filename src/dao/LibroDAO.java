@@ -1,6 +1,6 @@
 package dao;
 import conexion.conexionBD;
-import model.Libro;
+import modelos.Libro;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ public class LibroDAO {
         ps.setString(4, libro.getEditorial());
         ps.setInt(5, libro.getAnoPublicacion());
         ps.setInt(6, libro.getCantidadTotal());
-        ps.setInt(7, libro.getCAntidadDisponible());
+        ps.setInt(7, libro.getCantidadDisponible());
         ps.setString(8, libro.getCategoria());
         ps.setString(9, libro.getEstado());
 
@@ -335,7 +335,7 @@ public boolean actualizarLibro(Libro libro) {
         ps.setString(4, libro.getEditorial());
         ps.setInt(5, libro.getAnoPublicacion());
         ps.setInt(6, libro.getCantidadTotal());
-        ps.setInt(7, libro.getCAntidadDisponible());
+        ps.setInt(7, libro.getCantidadDisponible());
         ps.setString(8, libro.getCategoria());
         ps.setString(9, libro.getDescripcion());
         ps.setString(10, libro.getEstado());

@@ -2,12 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package vista;
+package vistas;
 
 import dao.LibroDAO;
-import model.Libro;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import modelos.Libro;
 import java.util.List;
-
+import javax.swing.DefaultButtonModel;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.TableCellRenderer;
 
 /**
  *
@@ -16,9 +30,8 @@ import java.util.List;
 public class VentanaLibros extends javax.swing.JPanel {
 
     private LibroDAO libroDAO;
-    
-     // Instancia del DAO
 
+    // Instancia del DAO
     public VentanaLibros() {
         initComponents();
 
@@ -40,8 +53,8 @@ public class VentanaLibros extends javax.swing.JPanel {
     // MÉTODOS PARA CONECTAR CON LA BD
     private void configurarTabla() {
         tblRegistrarLibros.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{},
-            new String[]{"ID", "Título", "Autor", "ISBN", "Editorial", "Año", "Cantidad", "Acciones"}
+                new Object[][]{},
+                new String[]{"ID", "Título", "Autor", "ISBN", "Editorial", "Año", "Cantidad", "Acciones"}
         ) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -61,9 +74,8 @@ public class VentanaLibros extends javax.swing.JPanel {
         tblRegistrarLibros.getColumnModel().getColumn(7).setMinWidth(220);
 
         // Renderizador y editor de botones
-        //tblRegistrarLibros.getColumnModel().getColumn(7).setCellRenderer(new ButtonRenderer());
+        tblRegistrarLibros.getColumnModel().getColumn(7).setCellRenderer(new ButtonRenderer());
         //tblRegistrarLibros.getColumnModel().getColumn(7).setCellEditor(new ButtonEditor(new javax.swing.JCheckBox()));
-
         // Apariencia
         tblRegistrarLibros.setRowHeight(50);
         tblRegistrarLibros.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 14));
@@ -85,8 +97,8 @@ public class VentanaLibros extends javax.swing.JPanel {
     private void cargarDatosTabla() {
         try {
             List<Libro> libros = libroDAO.obtenerTodos();
-            javax.swing.table.DefaultTableModel modelo =
-                (javax.swing.table.DefaultTableModel) tblRegistrarLibros.getModel();
+            javax.swing.table.DefaultTableModel modelo
+                    = (javax.swing.table.DefaultTableModel) tblRegistrarLibros.getModel();
             modelo.setRowCount(0);
 
             for (Libro libro : libros) {
@@ -105,8 +117,8 @@ public class VentanaLibros extends javax.swing.JPanel {
             System.out.println("/ Datos cargados: " + libros.size() + " libros");
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this,
-                "Error al cargar datos: " + e.getMessage(),
-                "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    "Error al cargar datos: " + e.getMessage(),
+                    "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
     }
@@ -115,15 +127,15 @@ public class VentanaLibros extends javax.swing.JPanel {
         try {
             if (txtTituloLibro.getText().trim().isEmpty()) {
                 javax.swing.JOptionPane.showMessageDialog(this,
-                    "El título es obligatorio", "Advertencia",
-                    javax.swing.JOptionPane.WARNING_MESSAGE);
+                        "El título es obligatorio", "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
                 txtTituloLibro.requestFocus();
                 return;
             }
             if (txtAutor.getText().trim().isEmpty()) {
                 javax.swing.JOptionPane.showMessageDialog(this,
-                    "El autor es obligatorio", "Advertencia",
-                    javax.swing.JOptionPane.WARNING_MESSAGE);
+                        "El autor es obligatorio", "Advertencia",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
                 txtAutor.requestFocus();
                 return;
             }
@@ -135,7 +147,7 @@ public class VentanaLibros extends javax.swing.JPanel {
             libro.setEditorial(txtEditorial.getText().trim());
 
             try {
-                int anio = Integer.parseInt(txtAñoPublicacion.getText().trim());
+                int anio = Integer.parseInt(txtAñoPublicacion.getDateFormatString().trim());
                 libro.setAnoPublicacion(anio);
             } catch (NumberFormatException e) {
                 libro.setAnoPublicacion(0);
@@ -161,8 +173,8 @@ public class VentanaLibros extends javax.swing.JPanel {
                 boolean actualizado = libroDAO.actualizarLibro(libro);
                 if (actualizado) {
                     javax.swing.JOptionPane.showMessageDialog(this,
-                        "Libro actualizado exitosamente",
-                        "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                            "Libro actualizado exitosamente",
+                            "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                     btnGuardar.setText("Guardar");
                     btnGuardar.setBackground(new java.awt.Color(51, 153, 0));
                     btnGuardar.putClientProperty("idLibro", null);
@@ -170,51 +182,161 @@ public class VentanaLibros extends javax.swing.JPanel {
                     cargarDatosTabla();
                 } else {
                     javax.swing.JOptionPane.showMessageDialog(this,
-                        "No se pudo actualizar el libro",
-                        "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                            "No se pudo actualizar el libro",
+                            "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
                 }
             } else {
                 // Guardar nuevo
                 boolean guardado = libroDAO.guardarLibro(libro);
                 if (guardado) {
                     javax.swing.JOptionPane.showMessageDialog(this,
-                        "Libro guardado exitosamente",
-                        "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                            "Libro guardado exitosamente",
+                            "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                     limpiarCampos();
                     cargarDatosTabla();
                 } else {
                     javax.swing.JOptionPane.showMessageDialog(this,
-                        "No se pudo guardar el libro",
-                        "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                            "No se pudo guardar el libro",
+                            "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
                 }
             }
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this,
-                "Error al guardar: " + e.getMessage(),
-                "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    "Error al guardar: " + e.getMessage(),
+                    "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
     }
-  
+
     private void limpiarCampos() {
         txtTituloLibro.setText("");
         txtAutor.setText("");
         txtIsbn.setText("");
         txtEditorial.setText("");
-        txtAñoPublicacion.setText("");
+        txtAñoPublicacion.cleanup();
         txtCantidad.setText("");
         txtTituloLibro.requestFocus();
     }
 
-   /*
+    class ButtonRenderer extends JPanel implements TableCellRenderer {
+
+        JButton btnEditar = new JButton("Editar");
+        JButton btnEliminar = new JButton("Eliminar");
+
+        public ButtonRenderer() {
+            setLayout(new FlowLayout(FlowLayout.CENTER, 8, 5));
+            setOpaque(true);
+
+            btnEditar.setBackground(new Color(0, 123, 255));
+            btnEditar.setForeground(Color.white);
+            btnEditar.setFocusPainted(false);
+            btnEditar.setBorderPainted(false);
+            btnEditar.setFont(new Font("Segoe UI", Font.BOLD, 15));
+
+            btnEditar.setPreferredSize(new Dimension(90, 28));
+            btnEditar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+            btnEliminar.setBackground(new Color(220, 53, 69));
+            btnEliminar.setForeground(Color.white);
+            btnEliminar.setFocusPainted(false);
+            btnEliminar.setBorderPainted(false);
+            btnEliminar.setFont(new Font("Segoe UI", Font.BOLD, 15));
+
+            btnEliminar.setPreferredSize(new Dimension(90, 28));
+            btnEliminar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+            //
+            add(btnEditar);
+            add(btnEliminar);
+
+            @Override
+            public Component getTableCellRendererComponent
+            (JTable table, Object value
+            , boolean isSelected, boolean hasFocus, int row, int column
+           
+            
+            
+            
+            
+            ){
+            
+        }
+            if (isSelected) {
+                setBackground(table.getSelectionBackground());
+            } else {
+                setBackground(table.getBackground());
+            }
+
+        }
+
+    }
+
+    class ButtonEditor extends DefaultCellEditor {
+
+        JPanel panel;
+        JButton btnEditar;
+        JButton btnEliminar;
+        int FilaSelecionada;
+
+        public ButtonEditor(JCheckBox checkBox) {
+
+            super(checkBox);
+
+            panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 5));
+            panel.setOpaque(true);
+            panel.setMinimumSize(new Dimension(350, 50));
+            panel.setMaximumSize(new Dimension(350, 50));
+
+            btnEditar.setBackground(new Color(0, 123, 255));
+            btnEditar.setForeground(Color.white);
+            btnEditar.setFocusPainted(false);
+            btnEditar.setBorderPainted(false);
+            btnEditar.setFont(new Font("Segoe UI", Font.BOLD, 15));
+
+            btnEditar.setPreferredSize(new Dimension(90, 28));
+            btnEditar.setMinimumSize(new Dimension(90, 28));
+            btnEditar.setMaximumSize(new Dimension(90, 28));
+
+            btnEditar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+            btnEliminar.setBackground(new Color(220, 53, 69));
+            btnEliminar.setForeground(Color.white);
+            btnEliminar.setFocusPainted(false);
+            btnEliminar.setBorderPainted(false);
+            btnEliminar.setFont(new Font("Segoe UI", Font.BOLD, 15));
+
+            btnEliminar.setPreferredSize(new Dimension(90, 28));
+            btnEliminar.setMinimumSize(new Dimension(90, 28));
+            btnEliminar.setMaximumSize(new Dimension(90, 28));
+            btnEliminar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+            btnEditar.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e
+                ) {
+                    btnEditar.setBackground(new Color(0, 102, 204));
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e
+                ) {
+                    btnEditar.setBackground(new Color(0, 102, 204));
+                }
+
+            }
+            );
+        }
+
+        /*
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
      * regenerated by the Form Editor.
-     */
-    @SuppressWarnings("unchecked")
+         */
+        @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCalendar1 = new com.toedter.calendar.JCalendar();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
@@ -231,10 +353,10 @@ public class VentanaLibros extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         txtIsbn = new javax.swing.JFormattedTextField();
         jLabel19 = new javax.swing.JLabel();
-        txtAñoPublicacion = new javax.swing.JFormattedTextField();
         jLabel12 = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JFormattedTextField();
         jLabel20 = new javax.swing.JLabel();
+        txtAñoPublicacion = new com.toedter.calendar.JDateChooser();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -301,19 +423,13 @@ public class VentanaLibros extends javax.swing.JPanel {
         jLabel19.setText("EDITORIAL");
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 380, -1));
 
-        txtAñoPublicacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAñoPublicacionActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtAñoPublicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 340, -1));
-
         jLabel12.setText("AÑO DE PUBLICACIÓN");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 340, -1));
         jPanel1.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 380, -1));
 
         jLabel20.setText("CANTIDAD");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 380, -1));
+        jPanel1.add(txtAñoPublicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 340, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 770, 550));
     }// </editor-fold>//GEN-END:initComponents
@@ -322,15 +438,12 @@ public class VentanaLibros extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void txtAñoPublicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAñoPublicacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAñoPublicacionActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -343,7 +456,7 @@ public class VentanaLibros extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblRegistrarLibros;
     private javax.swing.JFormattedTextField txtAutor;
-    private javax.swing.JFormattedTextField txtAñoPublicacion;
+    private com.toedter.calendar.JDateChooser txtAñoPublicacion;
     private javax.swing.JFormattedTextField txtCantidad;
     private javax.swing.JFormattedTextField txtEditorial;
     private javax.swing.JFormattedTextField txtIsbn;

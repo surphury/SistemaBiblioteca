@@ -1,4 +1,4 @@
-package model;
+package modelos;
 
 /**
  * Clase Modelo: Libro Representa un libro en la biblioteca
