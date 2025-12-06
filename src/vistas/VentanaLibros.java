@@ -74,7 +74,7 @@ public class VentanaLibros extends javax.swing.JPanel {
         tblRegistrarLibros.getColumnModel().getColumn(7).setMinWidth(220);
 
         // Renderizador y editor de botones
-        tblRegistrarLibros.getColumnModel().getColumn(7).setCellRenderer(new ButtonRenderer());
+        //tblRegistrarLibros.getColumnModel().getColumn(7).setCellRenderer(new ButtonRenderer());
         //tblRegistrarLibros.getColumnModel().getColumn(7).setCellEditor(new ButtonEditor(new javax.swing.JCheckBox()));
         // Apariencia
         tblRegistrarLibros.setRowHeight(50);
@@ -218,7 +218,7 @@ public class VentanaLibros extends javax.swing.JPanel {
         txtTituloLibro.requestFocus();
     }
 
-    class ButtonRenderer extends JPanel implements TableCellRenderer {
+    /*class ButtonRenderer extends JPanel implements TableCellRenderer {
 
         JButton btnEditar = new JButton("Editar");
         JButton btnEliminar = new JButton("Eliminar");
@@ -232,7 +232,6 @@ public class VentanaLibros extends javax.swing.JPanel {
             btnEditar.setFocusPainted(false);
             btnEditar.setBorderPainted(false);
             btnEditar.setFont(new Font("Segoe UI", Font.BOLD, 15));
-
             btnEditar.setPreferredSize(new Dimension(90, 28));
             btnEditar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
@@ -244,8 +243,6 @@ public class VentanaLibros extends javax.swing.JPanel {
 
             btnEliminar.setPreferredSize(new Dimension(90, 28));
             btnEliminar.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-            //
             add(btnEditar);
             add(btnEliminar);
 
@@ -269,9 +266,9 @@ public class VentanaLibros extends javax.swing.JPanel {
 
         }
 
-    }
+    }*/
 
-    class ButtonEditor extends DefaultCellEditor {
+   /* class ButtonEditor extends DefaultCellEditor {
 
         JPanel panel;
         JButton btnEditar;
@@ -325,7 +322,7 @@ public class VentanaLibros extends javax.swing.JPanel {
 
             }
             );
-        }
+        }*/
 
         /*
      * This method is called from within the constructor to initialize the form.
